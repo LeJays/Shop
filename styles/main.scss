@@ -1,0 +1,11 @@
+@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.hearder-bg{
+    background-image: url(https://res.cloudinary.com/dynk2ksk4/image/upload/v1759517644/header-bg_pfiwqn.svg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
