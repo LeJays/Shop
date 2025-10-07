@@ -1,9 +1,64 @@
+"use client"
 import { BaggageClaim, BarChart4, Cable, ChevronLeft, FolderOpen, Home, ShoppingBag, ShoppingBasket, ShoppingCart } from 'lucide-react';
 import Link from 'next/link';
 import React from 'react';
 import SubscriptionCard from './SubscriptionCard';
+import SidebarDropdownLink from './SidebarDropdownLink';
+import CollapsibleLinks from './CollapsibleLinks';
 
 const Sidebar = () => {
+    const inventoryLinks = [
+        {
+            title: "Articles",
+            href: "/dashboard/inventory",
+        },
+        {
+            title: "Groupes d'articles",
+            href: "/dashboard/inventory",
+        },
+        {
+            title: "Adjustements du stock",
+            href: "/dashboard/inventory",
+        },
+    ];
+    const salesLinks = [
+        {
+            title: "Clients",
+            href: "#",
+        },
+        {
+            title: "Commandes Clients",
+            href: "#",
+        },
+        {
+            title: "Emballages",
+            href: "#",
+        },
+        {
+            title: "Livraisons",
+            href: "#",
+        },
+        {
+            title: "Factures",
+            href: "#",
+        },
+        {
+            title: "Reçus de Vente",
+            href: "#",
+        },
+        {
+            title: "Paiements Enregistrés",
+            href: "#",
+        },
+        {
+            title: "Retours Clients",
+            href: "#",
+        },
+        {
+            title: "Note de Crédit",
+            href: "#",
+        }
+    ];
     return (
         <div className='w-60 min-h-screen bg-slate-800 text-slate-50 justify-between fixed'>
             {/* Top Part */}
@@ -20,14 +75,13 @@ const Sidebar = () => {
                         <Home className='w-4 h-4'/>
                         <span>Acceuil</span>
                     </Link>
-                    <button className='p-2 flex items-center space-x-2'>
-                        <BaggageClaim className='w-4 h-4'/>
-                        <span>Stock</span>
-                    </button>
-                    <button className='p-2 flex items-center space-x-2'>
-                        <ShoppingBasket className='w-4 h-4'/>
-                        <span>Sorties</span>
-                    </button>
+
+                    {/* Menu Stock */}
+                    <SidebarDropdownLink title="Stock" items={inventoryLinks} icon={BaggageClaim}/>
+
+                    {/* Menu Ventes */}
+                    <SidebarDropdownLink title="Ventes" items={salesLinks} icon={ShoppingCart}/>
+                    
                     <button className='p-2 flex items-center space-x-2'>
                         <ShoppingBag className='w-4 h-4'/>
                         <span>Achats</span>
