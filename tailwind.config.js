@@ -2,11 +2,14 @@
 module.exports = {
   // Le paramètre le plus important pour React
   content: [
-    // Scanne tous les fichiers dans le dossier 'src'
-    // avec les extensions .html, .js, .jsx, .ts, .tsx
-    "./src/**/*.{js,jsx,ts,tsx}",
-    // Ajoutez ceci si vous avez des classes dans le fichier index.html à la racine (recommandé)
-    "./index.html", 
+    // 1. Cible le dossier 'app' (si vous utilisez l'App Router)
+    "./app/**/*.{js,ts,jsx,tsx,mdx}", 
+    // 2. Cible le dossier 'pages' (si vous utilisez le Pages Router)
+    "./pages/**/*.{js,ts,jsx,tsx,mdx}", 
+    // 3. Cible le dossier 'components' à la racine pour les composants réutilisables
+    "./components/**/*.{js,ts,jsx,tsx,mdx}", 
+    // OPTIONNEL : Si vous avez des fichiers à la racine
+    "./*.{js,ts,jsx,tsx,mdx}", 
   ],
   theme: {
     // Utilisez 'extend' pour AJOUTER des personnalisations
@@ -18,6 +21,7 @@ module.exports = {
   },
   plugins: [
     // Ajoutez ici les plugins supplémentaires (ex: @tailwindcss/forms, @tailwindcss/typography)
+    require("tailwindcss-animate"),
     require("@tailwindcss/forms"),
   ],
 };

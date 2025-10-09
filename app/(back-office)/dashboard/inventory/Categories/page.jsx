@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ItemGroup = () => {
+const Categories = () => {
     return (
         <div>
             <h2>Categories</h2>
@@ -8,4 +8,4 @@ const ItemGroup = () => {
     );
 }
 
-export default ItemGroup;
+export default Categories;

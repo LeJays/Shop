@@ -1,12 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 @import "tailwindcss";
 
 @plugin "tailwindcss-animate";
 @import url("tw-animate-css");
 
 @custom-variant dark (&:is(.dark *));
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+
 
 .hearder-bg{
     background-image: url(https://res.cloudinary.com/dynk2ksk4/image/upload/v1759517644/header-bg_pfiwqn.svg);

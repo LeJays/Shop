@@ -10,15 +10,27 @@ const Sidebar = () => {
     const inventoryLinks = [
         {
             title: "Articles",
-            href: "/dashboard/inventory",
+            href: "/dashboard/inventory/",
         },
         {
-            title: "Groupes d'articles",
-            href: "/dashboard/inventory",
+            title: "Catégories",
+            href: "/dashboard/inventory/",
+        },
+        {
+            title: "Marques  ",
+            href: "/dashboard/inventory/",
+        },
+        {
+            title: "Units",
+            href: "/dashboard/inventory/",
+        },
+        {
+            title: "Entrepôts",
+            href: "/dashboard/inventory/",
         },
         {
             title: "Adjustements du stock",
-            href: "/dashboard/inventory",
+            href: "/dashboard/inventory/",
         },
     ];
     const salesLinks = [
