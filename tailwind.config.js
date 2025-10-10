@@ -1,6 +1,8 @@
 /** @type {import('tailwindcss').Config} */
-module.exports = {
-  // Le paramètre le plus important pour React
+import { withUt } from "uploadthing/tw";
+
+export default withUt({
+    // Le paramètre le plus important pour React
   content: [
     // 1. Cible le dossier 'app' (si vous utilisez l'App Router)
     "./app/**/*.{js,ts,jsx,tsx,mdx}", 
@@ -24,4 +26,4 @@ module.exports = {
     require("tailwindcss-animate"),
     require("@tailwindcss/forms"),
   ],
-};
+});

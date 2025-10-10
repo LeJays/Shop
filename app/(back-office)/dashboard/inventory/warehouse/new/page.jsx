@@ -1,5 +1,6 @@
 "use client"
 import FormHeader from '@/components/dashboard/FormHeader';
+import SelectInput from '@/components/FormInputs/SelectInput';
 import SubmitButton from '@/components/FormInputs/SubmitButton';
 import TextareaInput from '@/components/FormInputs/TextareaInput';
 import TextInput from '@/components/FormInputs/TextInput';
@@ -10,6 +11,16 @@ import React, { useState } from 'react';
 import { set, useForm } from 'react-hook-form';
 
 const NewWarehouse = () => {
+    const selectOptions = [
+        {
+            label: "Principal",
+            value: "principal"
+        },
+        {
+            label: "Secondaire",
+            value: "secondaire"
+        },
+    ]
     const {
         register,
         handleSubmit,
@@ -48,6 +59,13 @@ const NewWarehouse = () => {
             <form onSubmit={handleSubmit(onSubmit)} className='w-full max-w-4xl p-4 bg-white border border-gray-200 rounded-lg 
             shadow-sm sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700 mx-auto my-3'>
                 <div className="grid gap-4 sm:grid-cols-2">
+                    <SelectInput
+                    register={register}
+                    label="Type d'entrepôt"
+                    name={"type"}
+                    options={selectOptions}
+                    className='w-full'
+                    />
                     <TextInput
                     label="Nom de l'entrepôt"
                     name="title"
@@ -63,7 +81,6 @@ const NewWarehouse = () => {
                     isRequired={true}
                     register={register}
                     errors={errors}
-                    className='w-full'
                     placeholder="Entrez la localisation"
                     />
                     <TextareaInput
@@ -75,8 +92,8 @@ const NewWarehouse = () => {
                     errors={errors} 
                     />
                 </div>
-                {/* Description */}
-                
+
+
                 {/* Submit Button */}
                 <SubmitButton isLoading={loading} title="Enregistrer"/>
             </form>

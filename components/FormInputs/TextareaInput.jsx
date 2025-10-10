@@ -23,7 +23,7 @@ const TextareaInput = ({label,name,register,errors,isRequired=true,type="text",c
                 defaultValue={""}
                 placeholder={placeholder}
                 />
-                {errors.title && (
+                {errors[`${name}`] && (
                 <span className="text-sm text-red-600 ">
                     La description est requise!
                 </span>

@@ -61,7 +61,7 @@ const NewUnit = () => {
                     label="Abréviation"
                     name="abbreviation"
                     placeholder='Ex: Kg, Pc, L...'
-                    isRequired={false}
+                    isRequired={true}
                     register={register}
                     errors={errors} 
                     className='w-full'
