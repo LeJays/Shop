@@ -10,6 +10,7 @@ import Link from 'next/link';
 import React, { useState } from 'react';
 import { set, useForm } from 'react-hook-form';
 import { UploadButton, UploadDropzone } from '@/lib/uploadthing';
+import Image from 'next/image';
 
 const NewItem = () => {
     const [imageUrl, setImageUrl] = useState("");
@@ -245,52 +246,50 @@ const NewItem = () => {
                     />
                 </div>
 
-                {/* Course Image */}
+               {/* ---------------------- IMAGE UPLOAD ---------------------- */}
+<div className="col-span-full">
+  <div className="flex justify-between items-center mb-4">
+    <label className="block text-sm font-medium leading-6 text-gray-900">
+      Image de l'article (Optionnel)
+    </label>
 
-                {/* Upload thing */}
-                <div className="col-span-full">
-                <div className="flex justify-between items-center mb-4">
-                    <label
-                    //htmlFor="course-image"
-                    className="block text-sm font-medium leading-6 text-gray-900"
-                    >
-                    Image de l'article (Optionnel)
-                    </label>
-                    {imageUrl && (
-                    <button
-                        onClick={() => setImageUrl("")}
-                        type="button"
-                        className="flex space-x-2  bg-slate-900 rounded-md shadow text-slate-50  py-2 px-4"
-                    >
-                        <Pencil className="w-5 h-5" />
-                        <span>Change Image</span>
-                    </button>
-                    )}
-                </div>
-                {imageUrl ? (
-                    <Image
-                    src={imageUrl}
-                    alt="Item image"
-                    width={1000}
-                    height={667}
-                    className="w-full h-64 object-cover"
-                    />
-                ) : (
-                    <UploadDropzone
-                    endpoint="imageUploader"
-                    onClientUploadComplete={(res) => {
-                        setImageUrl(res[0].ufsUrl);
-                        // Do something with the response
-                        console.log(res);
-                        console.log("Upload Completed");
-                    }}
-                    onUploadError={(error) => {
-                        // Do something with the error.
-                        console.log(`ERROR! ${error.message}`);
-                    }}
-                    />
-                )}
-                </div>
+    {imageUrl && (
+      <button
+        onClick={() => setImageUrl("")}
+        type="button"
+        className="flex items-center space-x-2 bg-slate-900 text-white px-4 py-2 rounded-md text-sm hover:bg-slate-800 transition"
+      >
+        <Pencil className="w-5 h-5" />
+        <span>Changer l'image</span>
+      </button>
+    )}
+  </div>
+
+  {imageUrl ? (
+    <Image
+      src={imageUrl}
+      alt="Item image"
+      width={1000}
+      height={667}
+      unoptimized   // ✅ AJOUT IMPORTANT pour éviter l'erreur 504 / optimisation Next.js
+      className="w-full h-64 object-cover rounded-lg"
+    />
+  ) : (
+    <UploadButton
+      endpoint="imageUploader"
+      onClientUploadComplete={(res) => {
+        console.log(res);
+        const url = res?.[0]?.ufsUrl || res?.[0]?.ufsUrl; // ✅ compatible v8 + v9
+        if (url) setImageUrl(url);
+      }}
+      onUploadError={(err) => {
+        console.log("Upload error", err);
+      }}
+      className="w-full h-64 border-2 border-dashed border-gray-300 rounded-lg flex items-center justify-center hover:bg-gray-50 cursor-pointer"
+    />
+  )}
+</div>
+
 
 
                 {/* Submit Button */}
