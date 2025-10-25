@@ -247,48 +247,48 @@ const NewItem = () => {
                 </div>
 
                {/* ---------------------- IMAGE UPLOAD ---------------------- */}
-<div className="col-span-full">
-  <div className="flex justify-between items-center mb-4">
-    <label className="block text-sm font-medium leading-6 text-gray-900">
-      Image de l'article (Optionnel)
-    </label>
+              <div className="col-span-full">
+                <div className="flex justify-between items-center mb-4">
+                  <label className="block text-sm font-medium leading-6 text-gray-900">
+                    Image de l'article (Optionnel)
+                  </label>
 
-    {imageUrl && (
-      <button
-        onClick={() => setImageUrl("")}
-        type="button"
-        className="flex items-center space-x-2 bg-slate-900 text-white px-4 py-2 rounded-md text-sm hover:bg-slate-800 transition"
-      >
-        <Pencil className="w-5 h-5" />
-        <span>Changer l'image</span>
-      </button>
-    )}
-  </div>
+                  {imageUrl && (
+                    <button
+                      onClick={() => setImageUrl("")}
+                      type="button"
+                      className="flex items-center space-x-2 bg-slate-900 text-white px-4 py-2 rounded-md text-sm hover:bg-slate-800 transition"
+                    >
+                      <Pencil className="w-5 h-5" />
+                      <span>Changer l'image</span>
+                    </button>
+                  )}
+                </div>
 
-  {imageUrl ? (
-    <Image
-      src={imageUrl}
-      alt="Item image"
-      width={1000}
-      height={667}
-      unoptimized   // ✅ AJOUT IMPORTANT pour éviter l'erreur 504 / optimisation Next.js
-      className="w-full h-64 object-cover rounded-lg"
-    />
-  ) : (
-    <UploadButton
-      endpoint="imageUploader"
-      onClientUploadComplete={(res) => {
-        console.log(res);
-        const url = res?.[0]?.ufsUrl || res?.[0]?.ufsUrl; // ✅ compatible v8 + v9
-        if (url) setImageUrl(url);
-      }}
-      onUploadError={(err) => {
-        console.log("Upload error", err);
-      }}
-      className="w-full h-64 border-2 border-dashed border-gray-300 rounded-lg flex items-center justify-center hover:bg-gray-50 cursor-pointer"
-    />
-  )}
-</div>
+                {imageUrl ? (
+                  <Image
+                    src={imageUrl}
+                    alt="Item image"
+                    width={1000}
+                    height={667}
+                    unoptimized   // ✅ AJOUT IMPORTANT pour éviter l'erreur 504 / optimisation Next.js
+                    className="w-full h-64 object-cover rounded-lg"
+                  />
+                ) : (
+                  <UploadButton
+                    endpoint="imageUploader"
+                    onClientUploadComplete={(res) => {
+                      console.log(res);
+                      const url = res?.[0]?.ufsUrl || res?.[0]?.ufsUrl; // ✅ compatible v8 + v9
+                      if (url) setImageUrl(url);
+                    }}
+                    onUploadError={(err) => {
+                      console.log("Upload error", err);
+                    }}
+                    className="w-full h-64 border-2 border-dashed border-gray-300 rounded-lg flex items-center justify-center hover:bg-gray-50 cursor-pointer"
+                  />
+                )}
+              </div>
 
 
 
